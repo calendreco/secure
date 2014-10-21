@@ -118,7 +118,7 @@ func applyAllowedHosts(opt Options, res http.ResponseWriter, req *http.Request) 
 func applySSL(opt Options, res http.ResponseWriter, req *http.Request) {
 	if opt.SSLRedirect && (martini.Env == martini.Prod || opt.DisableProdCheck == true) {
 		isSSL := false
-		forwarded := req.Header.get("X-Forwarded-Proto")
+		forwarded := req.Header.Get("X-Forwarded-Proto")
 		if strings.EqualFold(req.URL.Scheme, "https") || req.TLS != nil || strings.EqualFold(forwarded, "https") {
 			isSSL = true
 		} else {
